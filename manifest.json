@@ -1,0 +1,38 @@
+{
+	"manifest_version": 2,
+	
+	"name": "Forecast Unofficial Chrome extension",
+	"description": "The Forecast UCe combines and extends the powerful tools from Harvest and Harvest Forecast with Cloudoki technologies to add that extra punch.",
+	"version": "0.1",
+	
+	"permissions": [
+		"tabs",
+		"activeTab",
+		"https://api.forecastapp.com/*",
+		"https://api.harvestapp.com/*",
+		"https://forecast-api.cloudoki.com/*"
+	],
+	"web_accessible_resources": [
+		"js/script.js",
+		"js/templates.js",
+		"vendor/mustache.min.js"
+	],
+	"browser_action": {
+		"default_title": "Forecast",
+		"default_icon": {
+			"16": "icon.png",
+			"48": "icon48.png",
+			"128": "icon128.png"
+		}
+	},
+	"content_scripts": [
+        {
+            "matches": [
+                "https://forecastapp.com/*"
+            ],
+            "js": ["js/extend.js"],
+            "css": ["css/extend.css"],
+            "run_at": "document_end"
+        }
+    ]
+}
